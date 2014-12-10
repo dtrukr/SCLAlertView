@@ -56,7 +56,8 @@ CGFloat kWindowHeight;
 CGFloat kTextHeight;
 
 // Font
-NSString *kDefaultFont = @"HelveticaNeue";
+NSString *kDefaultFont = @"OpenSans";
+NSString *kDefaultFontBold = @"OpenSans";
 NSString *kButtonFont = @"HelveticaNeue-Bold";
 
 // Timer
@@ -83,9 +84,9 @@ NSTimer *durationTimer;
         kCircleHeightBackground = 62.0f;
         kCircleIconHeight = 20.0f;
         kWindowWidth = 240.0f;
-        kWindowHeight = 178.0f;
-        kTextHeight = 90.0f;
-        _shouldDismissOnTapOutside = NO;
+        kWindowHeight = 208.0f;
+        kTextHeight = 120.0f;
+        _shouldDismissOnTapOutside = YES;
         _canAddObservers = YES;
         _keyboardIsVisible = NO;
         _hideAnimationType = FadeOut;
@@ -95,6 +96,7 @@ NSTimer *durationTimer;
         // Init
         _labelTitle = [[UILabel alloc] init];
         _viewText = [[UITextView alloc] init];
+        _viewText.userInteractionEnabled = NO;
         _contentView = [[UIView alloc] init];
         _circleView = [[UIView alloc] init];
         _circleViewBackground = [[UIView alloc] init];
@@ -124,9 +126,9 @@ NSTimer *durationTimer;
         _backgroundView.userInteractionEnabled = YES;
         
         // Title
-        _labelTitle.numberOfLines = 1;
+        _labelTitle.numberOfLines = 0;
         _labelTitle.textAlignment = NSTextAlignmentCenter;
-        _labelTitle.font = [UIFont fontWithName:kDefaultFont size:20.0f];
+        _labelTitle.font = [UIFont fontWithName:kDefaultFontBold size:17.0f];
         
         // View text
         _viewText.editable = NO;
@@ -531,7 +533,7 @@ NSTimer *durationTimer;
         }
         
         // Adjust text view size, if necessary
-        CGSize sz = CGSizeMake(kWindowWidth - 24.0f, 90.0f);
+        CGSize sz = CGSizeMake(kWindowWidth - 24.0f, 120.0f);
         NSDictionary *attr = @{NSFontAttributeName:self.viewText.font};
         
         if (SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"7.0"))
